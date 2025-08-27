@@ -21,16 +21,26 @@ def pressed():
     utime.sleep_ms(DEBOUNCE_MS)  # Delay to filter out mechanical bouncing
     return btn.value() == 0  # Return True if button is Low (pressed)
 
-state = 0
+
+def set_alternate(state: int) -> None:
+    """Drive LEDs in opposit states: 0 -> led1 on, 1 -> led2 on."""
+    led1.value(0 if state else 1)
+    led2.value(1 if state else 0)
+
+
 # Main program loop
+state = 0  #toggles 0/1 each cycle
 while True:
     # If button is pressed, blink LED fast; otherwise blink slow
     delay = FAST if pressed() else SLOW
-    # alternate LEDs
-    state ^= 1
-    led1.value(state)
-    led2.value(1 - state)
+    state ^= 1  # flip 0 <->1 each iteration
+    set_alternate(state) # light one LED and turn the other off
     utime.sleep(delay)
+
+
+    # led1.value(state)
+    # led2.value(1 - state)
+    # utime.sleep(delay)
 
 
     # # Turn LED on
