@@ -22,7 +22,7 @@ def pressed():
     return btn.value() == 0  # Return True if button is Low (pressed)
 
 
-def set_alternate(state: int) -> None:
+def set_alternate(state):
     """Drive LEDs in opposit states: 0 -> led1 on, 1 -> led2 on."""
     led1.value(0 if state else 1)
     led2.value(1 if state else 0)
