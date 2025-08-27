@@ -4,7 +4,7 @@ import utime
 # Create a Pin object for the onboard LED (set as an OUTPUT pin)
 led1 = machine.Pin("LED", machine.Pin.OUT)
 
-led2= machine.Pin(15, machine.Pin.OUT)
+led2= machine.Pin(28, machine.Pin.OUT)
 # Create a Pin object for a push button on GPIO 14 configured as an INPUT pin
 # Set default state to High
 btn = machine.Pin(14, machine.Pin.IN, machine.Pin.PULL_UP)
